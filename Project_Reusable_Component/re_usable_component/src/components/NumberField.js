@@ -3,7 +3,7 @@ import React from 'react';
 const NumberField = ({ value, label, name, placeholder, onChange }) => (
   <div className="form-group">
     {label && (
-      <label htmlFor="input-field">
+      <label>
         <h3>{label}</h3>
       </label>
     )}
