@@ -1,6 +1,6 @@
 # REUSABLE-COMPONENT
 
-##Description
+## Description
 
 Reusable components are created to use anywhere in the project.
 
@@ -13,7 +13,7 @@ Components created:
  
 ---
  
-##Installation
+## Installation
 
 -Run these commands in the terminal:
 -git clone https://github.com/ashik39/REUSABLE-COMPONENT.git
@@ -25,11 +25,11 @@ Components created:
 
 ---
 
-##Usage
+## Usage
 
 The reusable components are craeted inside 'components' folder.
 
-###TextField
+### TextField
 
 Pass the following as attributes in TextField component:
   -value : Value of field
@@ -38,7 +38,7 @@ Pass the following as attributes in TextField component:
   -placeholder: Placeholder of field
   -onChange : Pass the setState to assign a state
 
-###NumberField
+### NumberField
 
 Pass the following as attributes in NumberField component:
   -value : Value of field
@@ -47,7 +47,7 @@ Pass the following as attributes in NumberField component:
   -placeholder: Placeholder of field
   -onChange : Pass the setState to assign a state
 
-###SelectField
+### SelectField
 
 Pass the following as attributes in SelectField component:
   -value : Value of field
@@ -55,7 +55,7 @@ Pass the following as attributes in SelectField component:
   -data : Pass array of objects as data to show in options of select field
   -onChange : Pass the setState to assign a state
 
-###RadioButtonField
+### RadioButtonField
 
 Pass the following as attributes in RadioButtonField component:
   -value : Value of field
@@ -63,6 +63,6 @@ Pass the following as attributes in RadioButtonField component:
   -name : Name of field
   -onChange : Pass the setState to assign a state
 
-###ModalPopupField
+### ModalPopupField
 
 Add the elements required for project inside the ModalPopup component. Added elements will be displayed as modalpopup wherever used.
