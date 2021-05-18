@@ -1,14 +1,16 @@
 // import logo from './logo.svg';
 import { useState } from 'react';
+import './App.css';
 import NumberField from './components/NumberField';
 import TextField from './components/TextField';
 import SelectField from './components/SelectField';
-import './App.css';
+import RadioButtonField from './components/RadioButtonField';
 
 function App() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [select, setSelect] = useState('');
+  const [radio, setRadio] = useState('');
 
   const data = [
     {
@@ -31,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Form">
+      <div className="center">
         <form>
           <TextField
             value={name}
@@ -55,6 +57,26 @@ function App() {
             value={select}
             data={data}
             onChange={setSelect}
+          />
+          <br />
+          <h2>Radio Button Fields</h2>
+          <RadioButtonField
+            value="Male"
+            label="Radio Button"
+            name="gender"
+            onChange={setRadio}
+          />
+          <RadioButtonField
+            value="Female"
+            label="Radio Button"
+            name="gender"
+            onChange={setRadio}
+          />
+          <RadioButtonField
+            value="Others"
+            label="Radio Button"
+            name="gender"
+            onChange={setRadio}
           />
         </form>
       </div>
