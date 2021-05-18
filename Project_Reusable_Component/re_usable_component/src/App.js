@@ -5,12 +5,15 @@ import NumberField from './components/NumberField';
 import TextField from './components/TextField';
 import SelectField from './components/SelectField';
 import RadioButtonField from './components/RadioButtonField';
+import ModalPopup from './components/ModalPopup';
 
 function App() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [select, setSelect] = useState('');
   const [radio, setRadio] = useState('');
+  const [popup, setPopup] = useState(false);
+  const [dataState, setDataState] = useState(false);
 
   const data = [
     {
@@ -31,55 +34,98 @@ function App() {
     },
   ];
 
+  const handleConfirm = () => {
+    setDataState(true);
+    setPopup(false);
+  };
+
+  const handleCancel = () => {
+    setDataState(false);
+    setPopup(false);
+  };
+
+  const handleSubmit = () => {
+    setPopup(true);
+  };
   return (
     <div className="App">
-      <div className="center">
-        <form>
-          <TextField
-            value={name}
-            placeholder="Text"
-            label="Text Field"
-            name="name"
-            onChange={setName}
-          />
+      {popup && (
+        <ModalPopup state={popup}>
+          <h2>Confirm Submission</h2>
           <br />
-          <NumberField
-            value={number}
-            placeholder="Number"
-            label="Number Field"
-            name="number"
-            onChange={setNumber}
-          />
-          <br />
+          <span>
+            <button className="ModalBtn Left" onClick={handleCancel}>
+              Cancel
+            </button>
+            <button className="ModalBtn Right" onClick={handleConfirm}>
+              Confirm
+            </button>
+          </span>
+        </ModalPopup>
+      )}
 
-          <SelectField
-            label="Select Field"
-            value={select}
-            data={data}
-            onChange={setSelect}
-          />
+      {dataState ? (
+        <div className="data">
+          <h2>Data</h2>
           <br />
-          <h2>Radio Button Fields</h2>
-          <RadioButtonField
-            value="Male"
-            label="Radio Button"
-            name="gender"
-            onChange={setRadio}
-          />
-          <RadioButtonField
-            value="Female"
-            label="Radio Button"
-            name="gender"
-            onChange={setRadio}
-          />
-          <RadioButtonField
-            value="Others"
-            label="Radio Button"
-            name="gender"
-            onChange={setRadio}
-          />
-        </form>
-      </div>
+          <h4>Text: {name}</h4>
+          <h4>Number: {number}</h4>
+          <h4>Select: {select}</h4>
+          <h4>Radio: {radio}</h4>
+        </div>
+      ) : (
+        <div className="center">
+          <form>
+            <TextField
+              value={name}
+              placeholder="Text"
+              label="Text Field"
+              name="name"
+              onChange={setName}
+            />
+            <br />
+            <NumberField
+              value={number}
+              placeholder="Number"
+              label="Number Field"
+              name="number"
+              onChange={setNumber}
+            />
+            <br />
+
+            <SelectField
+              label="Select Field"
+              value={select}
+              data={data}
+              onChange={setSelect}
+            />
+            <br />
+            <h2>Radio Button Fields</h2>
+            <RadioButtonField
+              value="Male"
+              label="Radio Button"
+              name="gender"
+              onChange={setRadio}
+            />
+            <RadioButtonField
+              value="Female"
+              label="Radio Button"
+              name="gender"
+              onChange={setRadio}
+            />
+            <RadioButtonField
+              value="Others"
+              label="Radio Button"
+              name="gender"
+              onChange={setRadio}
+            />
+          </form>
+          <br />
+          <button className="SubmitBtn" onClick={handleSubmit}>
+            SUBMIT
+          </button>
+        </div>
+      )}
     </div>
   );
 }
