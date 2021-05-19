@@ -18,7 +18,7 @@ Components created:
 
 - Run these commands in the terminal:
 - git clone https://github.com/ashik39/REUSABLE-COMPONENT.git
-- cd Project_Reusable_Component
+- cd Project_Reusable_Component/re_usable_component
 - npm install
 - npm start
 - The app should open automatically in your browser usually at
