@@ -61,9 +61,6 @@
   position: relative;
   left: 50%;
   top: 50%;
-  /* right: 35%;
-  bottom: 35%; 
-  margin: auto;*/
   transform: translate(-50%, -50%);
   height: 40%;
   width: 40%;
@@ -83,6 +80,9 @@
   font-size: larger;
 }
 
+.red {
+  color: orange;
+}
 .SubmitBtn {
   background-color: rgb(17, 226, 129);
   color: black;

@@ -31,6 +31,7 @@ function ModalPopup(props) {
       </div>
     );
   }
+  return null;
 }
 
 export default ModalPopup;

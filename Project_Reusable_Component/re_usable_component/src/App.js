@@ -1,5 +1,5 @@
-// import logo from './logo.svg';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import './App.css';
 import NumberField from './components/NumberField';
 import TextField from './components/TextField';
@@ -14,23 +14,25 @@ function App() {
   const [radio, setRadio] = useState('');
   const [popup, setPopup] = useState(false);
   const [dataState, setDataState] = useState(false);
+  const { register, handleSubmit, errors } = useForm();
+  const radioButtonData = ['Male', 'Female', 'Other'];
 
-  const data = [
+  const selectData = [
     {
       id: '1',
-      name: 'One',
+      name: 'Chennai',
     },
     {
       id: '2',
-      name: 'Two',
+      name: 'Delhi',
     },
     {
       id: '3',
-      name: 'Three',
+      name: 'Mumbai',
     },
     {
       id: '4',
-      name: 'Four',
+      name: 'Kerala',
     },
   ];
 
@@ -44,7 +46,7 @@ function App() {
     setPopup(false);
   };
 
-  const handleSubmit = () => {
+  const submitButton = () => {
     setPopup(true);
   };
   return (
@@ -75,55 +77,63 @@ function App() {
         </div>
       ) : (
         <div className="center">
-          <form>
+          <form onSubmit={handleSubmit(submitButton)}>
             <TextField
-              value={name}
               placeholder="Text"
               label="Text Field"
               name="name"
-              onChange={setName}
+              setvalue={setName}
+              value={name}
+              register={register({
+                required: 'The name field is required.',
+              })}
+              errors={errors.name}
             />
             <br />
             <NumberField
-              value={number}
               placeholder="Number"
               label="Number Field"
               name="number"
-              onChange={setNumber}
+              setvalue={setNumber}
+              value={number}
+              register={register({
+                required: 'The Number field is required.',
+                pattern: {
+                  value: /^\d{10,15}$/,
+                  message: 'The mobile no must be between 10 and 15 digits.',
+                },
+              })}
+              errors={errors.number}
             />
             <br />
 
             <SelectField
               label="Select Field"
+              name="select"
+              data={selectData}
+              setvalue={setSelect}
               value={select}
-              data={data}
-              onChange={setSelect}
+              register={register({
+                required: 'The Select field is required.',
+              })}
+              errors={errors.select}
             />
             <br />
             <h2>Radio Button Fields</h2>
             <RadioButtonField
-              value="Male"
+              data={radioButtonData}
               label="Radio Button"
               name="gender"
-              onChange={setRadio}
+              setvalue={setRadio}
+              register={register({
+                required: 'Select anyone option',
+              })}
+              errors={errors.gender}
             />
-            <RadioButtonField
-              value="Female"
-              label="Radio Button"
-              name="gender"
-              onChange={setRadio}
-            />
-            <RadioButtonField
-              value="Others"
-              label="Radio Button"
-              name="gender"
-              onChange={setRadio}
-            />
+
+            <input type="submit" className="SubmitBtn" />
           </form>
           <br />
-          <button className="SubmitBtn" onClick={handleSubmit}>
-            SUBMIT
-          </button>
         </div>
       )}
     </div>
