@@ -12,7 +12,7 @@ function App() {
   const [number, setNumber] = useState('');
   const [select, setSelect] = useState('');
   const [radio, setRadio] = useState('');
-  const [popup, setPopup] = useState(false);
+  const [popupState, setPopupState] = useState(false);
   const [dataState, setDataState] = useState(false);
   const { register, handleSubmit, errors } = useForm();
   const radioButtonData = ['Male', 'Female', 'Other'];
@@ -38,34 +38,19 @@ function App() {
 
   const handleConfirm = () => {
     setDataState(true);
-    setPopup(false);
+    setPopupState(false);
   };
 
   const handleCancel = () => {
     setDataState(false);
-    setPopup(false);
+    setPopupState(false);
   };
 
   const submitButton = () => {
-    setPopup(true);
+    setPopupState(true);
   };
   return (
     <div className="App">
-      {popup && (
-        <ModalPopup state={popup}>
-          <h2>Confirm Submission</h2>
-          <br />
-          <span>
-            <button className="ModalBtn Left" onClick={handleCancel}>
-              Cancel
-            </button>
-            <button className="ModalBtn Right" onClick={handleConfirm}>
-              Confirm
-            </button>
-          </span>
-        </ModalPopup>
-      )}
-
       {dataState ? (
         <div className="data">
           <h2>Data</h2>
@@ -98,9 +83,9 @@ function App() {
               value={number}
               register={register({
                 required: 'The Number field is required.',
-                pattern: {
-                  value: /^\d{10,15}$/,
-                  message: 'The mobile no must be between 10 and 15 digits.',
+                minLength: {
+                  value: 5,
+                  message: 'Enter minimum five numbers',
                 },
               })}
               errors={errors.number}
@@ -135,6 +120,21 @@ function App() {
           </form>
           <br />
         </div>
+      )}
+
+      {popupState && (
+        <ModalPopup state={popupState}>
+          <h2>Confirm Submission</h2>
+          <br />
+          <span>
+            <button className="ModalBtn Left" onClick={handleCancel}>
+              Cancel
+            </button>
+            <button className="ModalBtn Right" onClick={handleConfirm}>
+              Confirm
+            </button>
+          </span>
+        </ModalPopup>
       )}
     </div>
   );
