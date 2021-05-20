@@ -9,7 +9,17 @@ const NumberField = ({
   register,
   errors = {},
 }) => {
-  const attributes = { ref: register };
+  const attributes = {};
+  if (register) {
+    attributes.ref = register;
+  }
+
+  const handleChange = (e) => {
+    if (setvalue) {
+      setvalue(e.target.value);
+    }
+    return null;
+  };
 
   return (
     <div className="form-group">
@@ -24,7 +34,7 @@ const NumberField = ({
         name={name}
         className="form-control"
         placeholder={placeholder}
-        onChange={(e) => setvalue(e.target.value)}
+        onChange={(e) => handleChange(e)}
         {...attributes}
       />
       {errors && <h4 className="red">{errors.message}</h4>}

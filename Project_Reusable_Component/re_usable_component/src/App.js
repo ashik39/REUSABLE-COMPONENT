@@ -46,8 +46,17 @@ function App() {
     setPopupState(false);
   };
 
-  const submitButton = () => {
+  const dataSet = (data) => {
+    setName(data.name);
+    setNumber(data.number);
+    setSelect(data.select);
+    setRadio(data.gender);
     setPopupState(true);
+  };
+
+  const submitButton = (data) => {
+    console.log('data:', data);
+    dataSet(data);
   };
   return (
     <div className="App">
@@ -67,8 +76,6 @@ function App() {
               placeholder="Text"
               label="Text Field"
               name="name"
-              setvalue={setName}
-              value={name}
               register={register({
                 required: 'The name field is required.',
               })}
@@ -79,8 +86,6 @@ function App() {
               placeholder="Number"
               label="Number Field"
               name="number"
-              setvalue={setNumber}
-              value={number}
               register={register({
                 required: 'The Number field is required.',
                 minLength: {
@@ -96,27 +101,24 @@ function App() {
               label="Select Field"
               name="select"
               data={selectData}
-              setvalue={setSelect}
-              value={select}
               register={register({
                 required: 'The Select field is required.',
               })}
               errors={errors.select}
             />
             <br />
-            <h2>Radio Button Fields</h2>
+
             <RadioButtonField
               data={radioButtonData}
-              label="Radio Button"
+              label="Radio Button Field"
               name="gender"
-              setvalue={setRadio}
               register={register({
                 required: 'Select anyone option',
               })}
               errors={errors.gender}
             />
 
-            <input type="submit" className="SubmitBtn" />
+            <input type="submit" className="SubmitBtn" value="SUBMIT" />
           </form>
           <br />
         </div>

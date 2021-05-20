@@ -9,7 +9,17 @@ const SelectField = ({
   register,
   errors = {},
 }) => {
-  const attributes = { ref: register };
+  const attributes = {};
+  if (register) {
+    attributes.ref = register;
+  }
+
+  const handleChange = (e) => {
+    if (setvalue) {
+      setvalue(e.target.value);
+    }
+    return null;
+  };
 
   return (
     <div>
@@ -22,7 +32,7 @@ const SelectField = ({
         name={name}
         className="form-select"
         value={value}
-        onChange={(e) => setvalue(e.target.value)}
+        onChange={(e) => handleChange(e)}
         {...attributes}
       >
         <option value="">Select</option>

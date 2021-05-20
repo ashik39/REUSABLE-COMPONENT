@@ -8,10 +8,24 @@ const RadioButtonField = ({
   register,
   errors = {},
 }) => {
-  const attributes = { ref: register };
+  const attributes = {};
+  if (register) {
+    attributes.ref = register;
+  }
 
+  const handleChange = (e) => {
+    if (setvalue) {
+      setvalue(e.target.value);
+    }
+    return null;
+  };
   return (
     <div className="form-group">
+      {label && (
+        <label>
+          <h3>{label}</h3>
+        </label>
+      )}
       {data &&
         data.map((value) => (
           <div>
@@ -22,11 +36,11 @@ const RadioButtonField = ({
               id={value}
               name={name}
               value={value}
-              onChange={(e) => setvalue(e.target.value)}
+              onChange={(e) => handleChange(e)}
               {...attributes}
             />
             &nbsp;&nbsp;
-            {label && (
+            {value && (
               <label for={value}>
                 <h4>{value}</h4>
               </label>
