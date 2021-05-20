@@ -30,52 +30,54 @@ Components created:
 
 The reusable components are craeted inside 'components' folder.
 
+**Note: If you are using 'register' from react-hook-form in "register" attribute. It is not required to use "setvalue" and "value" in attributes of reusable components.**
+
 ### TextField
 
 Pass the following as attributes in TextField component:
 
-- label="" : Label for field as string
-- name="" : Name of field as string
-- placeholder="": Placeholder of field as string
-- value={} : Pass state value for field
-- setvalue={} : Pass the setState to assign a state value
-- register={} : Pass validations using register from react-hook-form if required
-- errors={} : Pass errors state from react-hook-form with given name of field (example : errors={errors.text} )
+- label : Label of field
+- name : Name of field
+- placeholder: Placeholder of field
+- value : Pass state value for field
+- setvalue : Pass the setState to assign a state value
+- register : Pass validations using register from react-hook-form if required
+- errors : Pass errors state from react-hook-form with given name of field (example : errors={errors.text} )
 
 ### NumberField
 
 Pass the following as attributes in NumberField component:
 
-- label="" : Label for field as string
-- name="" : Name of field as string
-- placeholder="": Placeholder of field as string
-- value={} : Pass state value for field
-- setvalue={} : Pass the setState to assign a state value
-- register={} : Pass validations using register from react-hook-form if required
-- errors={} : Pass errors state from react-hook-form with given name of field (example : errors={errors.number} )
+- label : Label of field
+- name : Name of field
+- placeholder Placeholder of field
+- value : Pass state value for field
+- setvalue : Pass the setState to assign a state value
+- register : Pass validations using register from react-hook-form if required
+- errors : Pass errors state from react-hook-form with given name of field (example : errors={errors.number} )
 
 ### SelectField
 
 Pass the following as attributes in SelectField component:
 
-- label="" : Label for field as string
-- name="" : Name of field as string
-- data={}: Pass array of data to show in options
-- value={} : Pass state value for field
-- setvalue={} : Pass the setState to assign a state value
-- register={} : Pass validations using register from react-hook-form if required
-- errors={} : Pass errors state from react-hook-form with given name of field (example : errors={errors.select )
+- label : Label of field
+- name : Name of field
+- data : Pass array of data to show in options
+- value : Pass state value for field
+- setvalue : Pass the setState to assign a state value
+- register : Pass validations using register from react-hook-form if required
+- errors : Pass errors state from react-hook-form with given name of field (example : errors={errors.select )
 
 ### RadioButtonField
 
 Pass the following as attributes in RadioButtonField component:
 
-- label="" : Label for field as string
-- name="" : Name of field as string
-- data={}: Pass array of data to show as radio button options
-- setvalue={} : Pass the setState to assign a state value
-- register={} : Pass validations using register from react-hook-form if required
-- errors={} : Pass errors state from react-hook-form with given name of field (example : errors={errors.radio} )
+- label : Label of field
+- name : Name of field
+- data : Pass array of data to show as radio button options
+- setvalue : Pass the setState to assign a option value
+- register : Pass validations using register from react-hook-form if required
+- errors : Pass errors state from react-hook-form with given name of field (example : errors={errors.radio} )
 
 ### ModalPopupField
 
