@@ -79,7 +79,7 @@ function App() {
               register={register({
                 required: 'The name field is required.',
               })}
-              errors={errors.name}
+              errors={errors}
             />
             <br />
             <NumberField
@@ -93,7 +93,7 @@ function App() {
                   message: 'Enter minimum five numbers',
                 },
               })}
-              errors={errors.number}
+              errors={errors}
             />
             <br />
 
@@ -104,7 +104,7 @@ function App() {
               register={register({
                 required: 'The Select field is required.',
               })}
-              errors={errors.select}
+              errors={errors}
             />
             <br />
 
@@ -115,7 +115,7 @@ function App() {
               register={register({
                 required: 'Select anyone option',
               })}
-              errors={errors.gender}
+              errors={errors}
             />
 
             <input type="submit" className="SubmitBtn" value="SUBMIT" />

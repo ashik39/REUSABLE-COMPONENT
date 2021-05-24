@@ -43,7 +43,7 @@ const SelectField = ({
             </option>
           ))}
       </select>
-      {errors && <h4 className="red">{errors.message}</h4>}
+      {errors[name] && <h4 className="red">{errors?.[name]?.message}</h4>}
     </div>
   );
 };

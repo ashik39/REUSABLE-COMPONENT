@@ -36,7 +36,7 @@ const TextField = ({
         onChange={(e) => handleChange(e)}
         {...attributes}
       />
-      {errors && <h4 className="red">{errors.message}</h4>}
+      {errors[name] && <h4 className="red">{errors?.[name]?.message}</h4>}
     </div>
   );
 };
