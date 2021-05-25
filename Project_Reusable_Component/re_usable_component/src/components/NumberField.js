@@ -7,6 +7,7 @@ const NumberField = ({
   placeholder,
   setvalue,
   register,
+  defaultValue,
   errors = {},
 }) => {
   const attributes = {};
@@ -20,6 +21,11 @@ const NumberField = ({
     }
     return null;
   };
+  if (value) {
+    attributes.value = value;
+  } else {
+    attributes.defaultValue = defaultValue;
+  }
 
   return (
     <div className="form-group">

@@ -7,6 +7,7 @@ const TextField = ({
   placeholder,
   setvalue,
   register,
+  defaultValue,
   errors = {},
 }) => {
   const attributes = {};
@@ -20,6 +21,12 @@ const TextField = ({
     }
     return null;
   };
+
+  if (value) {
+    attributes.value = value;
+  } else {
+    attributes.defaultValue = defaultValue;
+  }
   return (
     <div className="form-group">
       {label && (

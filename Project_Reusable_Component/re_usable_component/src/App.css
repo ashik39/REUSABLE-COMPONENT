@@ -9,7 +9,7 @@
 
 .center {
   width: 40%;
-  margin-left: 550px;
+  margin-left: 520px;
   padding-top: 20px;
   color: white;
 }
@@ -127,4 +127,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.white {
+  color: white;
 }

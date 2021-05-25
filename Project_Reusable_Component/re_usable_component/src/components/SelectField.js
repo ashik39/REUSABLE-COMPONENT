@@ -4,9 +4,11 @@ const SelectField = ({
   name,
   data,
   setvalue,
+  placeholder,
   label,
   value,
   register,
+  defaultValue,
   errors = {},
 }) => {
   const attributes = {};
@@ -21,6 +23,13 @@ const SelectField = ({
     return null;
   };
 
+  if (value) {
+    attributes.value = value;
+  }
+  if (defaultValue) {
+    attributes.defaultValue = defaultValue.value;
+  }
+
   return (
     <div>
       {label && (
@@ -31,14 +40,14 @@ const SelectField = ({
       <select
         name={name}
         className="form-select"
-        value={value}
+        // value={value}
         onChange={(e) => handleChange(e)}
         {...attributes}
       >
-        <option value="">Select</option>
+        <option value="">{placeholder}</option>
         {data &&
           data.map((option) => (
-            <option key={option.id} value={option.name}>
+            <option value={option.value} key={option.value}>
               {option.name}
             </option>
           ))}
