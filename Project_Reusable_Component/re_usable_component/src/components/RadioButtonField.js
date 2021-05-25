@@ -1,24 +1,36 @@
 import React from 'react';
+import { useState } from 'react/cjs/react.development';
 
 const RadioButtonField = ({
-  data,
+  options,
   label,
   name,
+  defaultChecked = '',
   setvalue,
   register,
   errors = {},
 }) => {
   const attributes = {};
+  const [value, setValue] = useState(false);
+  var check = true;
   if (register) {
     attributes.ref = register;
   }
+
+  if (defaultChecked) {
+    check = false;
+  }
+
+  const defaultValue = defaultChecked;
 
   const handleChange = (e) => {
     if (setvalue) {
       setvalue(e.target.value);
     }
+    setValue(true);
     return null;
   };
+
   return (
     <div className="form-group">
       {label && (
@@ -26,27 +38,66 @@ const RadioButtonField = ({
           <h3>{label}</h3>
         </label>
       )}
-      {data &&
-        data.map((value) => (
-          <div>
-            <br />
-            <input
-              class="form-check-input"
-              type="radio"
-              id={value}
-              name={name}
-              value={value}
-              onChange={(e) => handleChange(e)}
-              {...attributes}
-            />
-            &nbsp;&nbsp;
-            {value && (
-              <label for={value}>
-                <h4>{value}</h4>
-              </label>
-            )}
-          </div>
-        ))}
+      <br />
+      {options.map((option) => (
+        <div>
+          {check ? (
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                id={option}
+                name={name}
+                value={option}
+                onChange={(e) => handleChange(e)}
+                {...attributes}
+              />
+              &nbsp;&nbsp;
+              {name && (
+                <label for={option}>
+                  <h4>{option}</h4>
+                </label>
+              )}
+            </div>
+          ) : value ? (
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                id={option}
+                name={name}
+                value={option}
+                onChange={(e) => handleChange(e)}
+                {...attributes}
+              />
+              &nbsp;&nbsp;
+              {name && (
+                <label for={option}>
+                  <h4>{option}</h4>
+                </label>
+              )}
+            </div>
+          ) : (
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                id={option}
+                defaultChecked={defaultValue === option}
+                onChange={(e) => handleChange(e)}
+                {...attributes}
+              />
+              &nbsp;&nbsp;
+              {name && (
+                <label for={option}>
+                  <h4>{option}</h4>
+                </label>
+              )}
+            </div>
+          )}
+        </div>
+      ))}
+
       {errors[name] && <h4 className="red">{errors?.[name]?.message}</h4>}
       <br />
     </div>

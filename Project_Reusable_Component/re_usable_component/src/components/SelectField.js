@@ -40,7 +40,6 @@ const SelectField = ({
       <select
         name={name}
         className="form-select"
-        // value={value}
         onChange={(e) => handleChange(e)}
         {...attributes}
       >

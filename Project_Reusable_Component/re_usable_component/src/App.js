@@ -1,13 +1,13 @@
 import './App.css';
-// import CreateForm from './components/CreateForm';
 import EditForm from './components/EditForm';
+//import CreateForm from './components/CreateForm';
 
 function App() {
   return (
     <div className="App">
       <div>
-        {/* <CreateForm /> */}
         <EditForm />
+        {/* <CreateForm /> */}
       </div>
     </div>
   );

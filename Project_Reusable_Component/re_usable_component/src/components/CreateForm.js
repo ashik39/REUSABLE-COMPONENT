@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import './App.css';
 import NumberField from './NumberField';
 import TextField from './TextField';
 import SelectField from './SelectField';
@@ -60,6 +59,7 @@ function CreateForm() {
   };
   return (
     <div className="App">
+      <h2 className="white">CREATE FORM</h2>
       {dataState ? (
         <div className="data">
           <h2>Data</h2>
@@ -110,7 +110,7 @@ function CreateForm() {
             <br />
 
             <RadioButtonField
-              data={radioButtonData}
+              options={radioButtonData}
               label="Radio Button Field"
               name="gender"
               register={register({

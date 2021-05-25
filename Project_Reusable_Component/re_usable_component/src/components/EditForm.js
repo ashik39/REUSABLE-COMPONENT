@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import './App.css';
 import TextField from './TextField';
 import NumberField from './NumberField';
 import SelectField from './SelectField';
-//import RadioButtonField from './RadioButtonField';
-// import ModalPopup from './components/ModalPopup';
+import RadioButtonField from './RadioButtonField';
 
 function EditForm(props) {
   const [name, setName] = useState('Default Text');
@@ -14,15 +12,10 @@ function EditForm(props) {
     name: 'Mumbai',
     value: 'Mumbai',
   });
-  //const [radio, setRadio] = useState({ id: 2, value: 'Female' });
-  //   const [popupState, setPopupState] = useState(false);
+  const [radio, setRadio] = useState('Female');
   const [dataState, setDataState] = useState(false);
   const { register, handleSubmit, errors } = useForm();
-  //   const radioButtonData = [
-  //     { name: 'Male', value: 'Male' },
-  //     { name: 'Female', value: 'Female' },
-  //     { name: 'Other', value: 'Other' },
-  //   ];
+  const radioButtonData = ['Male', 'Female', 'Other'];
 
   const selectData = [
     {
@@ -39,53 +32,14 @@ function EditForm(props) {
     },
   ];
 
-  //   [
-  //     {
-  //       id: '1',
-  //       name: 'Chennai',
-  //     },
-  //     {
-  //       id: '2',
-  //       name: 'Delhi',
-  //     },
-  //     {
-  //       id: '3',
-  //       name: 'Mumbai',
-  //     },
-  //     {
-  //       id: '4',
-  //       name: 'Kerala',
-  //     },
-  //   ];
-
-  //   const handleConfirm = () => {
-  //     setDataState(true);
-  //     //      setPopupState(false);
-  //   };
-
-  //   const handleCancel = () => {
-  //     setDataState(false);
-  //     //      setPopupState(false);
-  //   };
-
-  //   const dataSet = (data) => {
-  //     setName(data.name);
-  //     setNumber(data.number);
-  //     setSelect(data.select);
-  //     setRadio(data.gender);
-  //     setPopupState(true);
-  //   };
-
   const submitButton = (data) => {
     console.log('data:', data);
 
     setName(data.name);
     setNumber(data.number);
     setSelect(data.select);
+    if (data.gender) setRadio(data.gender);
     setDataState(true);
-    //setRadio(data.gender);
-    //props.editedData(name);
-    //dataSet(data);
   };
   return (
     <div className="App">
@@ -118,7 +72,6 @@ function EditForm(props) {
             errors={errors}
           />
           <br />
-
           <SelectField
             label="Select Field"
             name="select"
@@ -132,17 +85,17 @@ function EditForm(props) {
           />
           <br />
 
-          {/* <RadioButtonField
-            data={radioButtonData}
+          <RadioButtonField
+            options={radioButtonData}
             label="Radio Button Field"
             name="gender"
             defaultChecked={radio}
+            setvalue={setRadio}
             register={register({
               required: 'Select anyone option',
             })}
             errors={errors}
-          /> */}
-
+          />
           <input type="submit" className="SubmitBtn" value="SUBMIT" />
         </form>
       </div>
@@ -153,24 +106,9 @@ function EditForm(props) {
           <h4>Text: {name}</h4>
           <h4>Number: {number}</h4>
           <h4>Select: {select}</h4>
-          {/*<h4>Radio: {radio}</h4> */}
+          <h4>Radio: {radio}</h4>
         </div>
       )}
-
-      {/* {popupState && (
-        <ModalPopup state={popupState}>
-          <h2>Confirm Submission</h2>
-          <br />
-          <span>
-            <button className="ModalBtn Left" onClick={handleCancel}>
-              Cancel
-            </button>
-            <button className="ModalBtn Right" onClick={handleConfirm}>
-              Confirm
-            </button>
-          </span>
-        </ModalPopup>
-      )} */}
     </div>
   );
 }
