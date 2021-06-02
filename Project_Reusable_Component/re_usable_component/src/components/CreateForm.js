@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import NumberField from './NumberField';
-import TextField from './TextField';
-import SelectField from './SelectField';
-import RadioButtonField from './RadioButtonField';
+import NumberField from './Input/NumberField';
+import TextField from './Input/TextField';
+import SelectField from './Select/SelectField';
+import RadioButtonField from './Radio/RadioButtonField';
 import ModalPopup from './ModalPopup';
 
 function CreateForm() {

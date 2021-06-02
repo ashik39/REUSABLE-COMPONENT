@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import TextField from './TextField';
-import NumberField from './NumberField';
-import SelectField from './SelectField';
-import RadioButtonField from './RadioButtonField';
+import TextField from './Input/TextField';
+import NumberField from './Input/NumberField';
+import SelectField from './Select/SelectField';
+import RadioButtonField from './Radio/RadioButtonField';
 
 function EditForm(props) {
   const [name, setName] = useState('Default Text');
