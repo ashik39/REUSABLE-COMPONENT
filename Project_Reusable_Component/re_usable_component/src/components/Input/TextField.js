@@ -1,16 +1,18 @@
 import React from 'react';
+import '../Style.css';
 
 const TextField = ({
+  type,
   value,
-  label,
-  name,
-  placeholder,
+  label = '',
+  name = '',
+  placeholder = '',
   setvalue,
   register,
-  defaultValue,
+  defaultValue = '',
   errors = {},
 }) => {
-  const attributes = {};
+  const attributes = { type: type };
   if (register) {
     attributes.ref = register;
   }
@@ -35,7 +37,6 @@ const TextField = ({
         </label>
       )}
       <input
-        type="text"
         value={value}
         name={name}
         className="form-control"
@@ -43,7 +44,9 @@ const TextField = ({
         onChange={(e) => handleChange(e)}
         {...attributes}
       />
-      {errors[name] && <h4 className="red">{errors?.[name]?.message}</h4>}
+      {errors[name] && (
+        <h6 className="text-danger">{errors?.[name]?.message}</h6>
+      )}
     </div>
   );
 };

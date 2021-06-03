@@ -6,4 +6,28 @@ export default {
   component: RadioButtonField,
 };
 
-export const Radiofield = () => <RadioButtonField options={['1', '2', '3']} />;
+const Template = (args) => <RadioButtonField {...args} />;
+
+export const Radiofield = Template.bind({});
+Radiofield.args = {
+  label: 'Radio',
+  name: 'numbers',
+  options: ['one', 'two', 'three'],
+  placeholder: 'Enter Your Text',
+};
+
+const RadioTemplate = (args) => <RadioButtonField {...args} />;
+
+export const RadioWithError = RadioTemplate.bind({});
+RadioWithError.args = {
+  label: 'Radio',
+  name: 'numbers',
+  options: ['one', 'two', 'three'],
+  placeholder: 'Enter Your Text',
+  errors: {
+    numbers: {
+      message: 'Radio Field Required',
+      type: 'required',
+    },
+  },
+};

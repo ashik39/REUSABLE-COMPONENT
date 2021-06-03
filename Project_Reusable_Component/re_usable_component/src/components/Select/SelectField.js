@@ -1,14 +1,15 @@
 import React from 'react';
+import '../Style.css';
 
 const SelectField = ({
-  name,
-  data,
+  name = '',
+  data = [],
   setvalue,
-  placeholder,
-  label,
+  placeholder = '',
+  label = '',
   value,
   register,
-  defaultValue,
+  defaultValue = '',
   errors = {},
 }) => {
   const attributes = {};
@@ -51,7 +52,9 @@ const SelectField = ({
             </option>
           ))}
       </select>
-      {errors[name] && <h4 className="red">{errors?.[name]?.message}</h4>}
+      {errors[name] && (
+        <h6 className="text-danger">{errors?.[name]?.message}</h6>
+      )}
     </div>
   );
 };

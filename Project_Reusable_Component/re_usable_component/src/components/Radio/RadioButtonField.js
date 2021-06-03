@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState } from 'react/cjs/react.development';
+import '../Style.css';
 
 const RadioButtonField = ({
-  options,
-  label,
-  name,
+  options = [],
+  label = '',
+  name = '',
   defaultChecked = '',
   setvalue,
   register,
@@ -98,7 +99,9 @@ const RadioButtonField = ({
         </div>
       ))}
 
-      {errors[name] && <h4 className="red">{errors?.[name]?.message}</h4>}
+      {errors[name] && (
+        <h6 className="text-danger">{errors?.[name]?.message}</h6>
+      )}
       <br />
     </div>
   );

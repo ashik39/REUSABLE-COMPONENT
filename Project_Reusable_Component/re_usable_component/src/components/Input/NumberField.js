@@ -2,12 +2,12 @@ import React from 'react';
 
 const NumberField = ({
   value,
-  label,
-  name,
-  placeholder,
+  label = '',
+  name = '',
+  placeholder = '',
   setvalue,
   register,
-  defaultValue,
+  defaultValue = '',
   errors = {},
 }) => {
   const attributes = {};
@@ -43,7 +43,9 @@ const NumberField = ({
         onChange={(e) => handleChange(e)}
         {...attributes}
       />
-      {errors[name] && <h4 className="red">{errors?.[name]?.message}</h4>}
+      {errors[name] && (
+        <h6 className="text-danger">{errors?.[name]?.message}</h6>
+      )}
     </div>
   );
 };
