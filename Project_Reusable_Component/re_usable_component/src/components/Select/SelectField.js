@@ -1,5 +1,6 @@
 import React from 'react';
 import '../Style.css';
+import PropTypes from 'prop-types';
 
 const SelectField = ({
   name = '',
@@ -11,10 +12,22 @@ const SelectField = ({
   register,
   defaultValue = '',
   errors = {},
+  className = 'form-select',
 }) => {
   const attributes = {};
   if (register) {
     attributes.ref = register;
+  }
+
+  if (className) {
+    attributes.className = className;
+  }
+
+  if (value) {
+    attributes.value = value;
+  }
+  if (defaultValue) {
+    attributes.defaultValue = defaultValue;
   }
 
   const handleChange = (e) => {
@@ -24,13 +37,6 @@ const SelectField = ({
     return null;
   };
 
-  if (value) {
-    attributes.value = value;
-  }
-  if (defaultValue) {
-    attributes.defaultValue = defaultValue.value;
-  }
-
   return (
     <div>
       {label && (
@@ -38,12 +44,7 @@ const SelectField = ({
           <h3>{label}</h3>
         </label>
       )}
-      <select
-        name={name}
-        className="form-select"
-        onChange={(e) => handleChange(e)}
-        {...attributes}
-      >
+      <select name={name} onChange={(e) => handleChange(e)} {...attributes}>
         <option value="">{placeholder}</option>
         {data &&
           data.map((option) => (
@@ -57,5 +58,18 @@ const SelectField = ({
       )}
     </div>
   );
+};
+
+SelectField.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  setvalue: PropTypes.func,
+  register: PropTypes.func,
+  className: PropTypes.string,
+  data: PropTypes.array,
+  errors: PropTypes.object,
+  defaultValue: PropTypes.string,
 };
 export default SelectField;

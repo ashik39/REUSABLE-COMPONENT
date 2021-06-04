@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: black;
+  padding-bottom: 100%;
 }
 
 .white {
@@ -13,7 +15,7 @@
 
 .center {
   width: 40%;
-  margin-left: 520px;
+  margin-left: 420px;
   padding-top: 20px;
   color: white;
 }

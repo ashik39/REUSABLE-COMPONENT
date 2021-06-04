@@ -4,13 +4,6 @@ import InputComponent from './TextField';
 export default {
   title: 'Form/Input',
   component: InputComponent,
-  parameters: {
-    docs: {
-      description: {
-        component: 'Reusable Input Component',
-      },
-    },
-  },
 };
 
 const Template = (args) => <InputComponent {...args} />;

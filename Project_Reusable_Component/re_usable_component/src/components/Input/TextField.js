@@ -1,5 +1,6 @@
 import React from 'react';
 import '../Style.css';
+import PropTypes from 'prop-types';
 
 const TextField = ({
   type,
@@ -11,10 +12,21 @@ const TextField = ({
   register,
   defaultValue = '',
   errors = {},
+  className = 'form-control',
 }) => {
   const attributes = { type: type };
   if (register) {
     attributes.ref = register;
+  }
+
+  if (className) {
+    attributes.className = className;
+  }
+
+  if (value) {
+    attributes.value = value;
+  } else {
+    attributes.defaultValue = defaultValue;
   }
 
   const handleChange = (e) => {
@@ -23,12 +35,6 @@ const TextField = ({
     }
     return null;
   };
-
-  if (value) {
-    attributes.value = value;
-  } else {
-    attributes.defaultValue = defaultValue;
-  }
   return (
     <div className="form-group">
       {label && (
@@ -39,7 +45,6 @@ const TextField = ({
       <input
         value={value}
         name={name}
-        className="form-control"
         placeholder={placeholder}
         onChange={(e) => handleChange(e)}
         {...attributes}
@@ -49,6 +54,19 @@ const TextField = ({
       )}
     </div>
   );
+};
+
+TextField.propTypes = {
+  type: PropTypes.string,
+  value: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  setvalue: PropTypes.func,
+  register: PropTypes.func,
+  defaultValue: PropTypes.string,
+  className: PropTypes.string,
+  errors: PropTypes.object,
 };
 
 export default TextField;

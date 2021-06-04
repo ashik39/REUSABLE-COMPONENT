@@ -13,7 +13,6 @@ Radiofield.args = {
   label: 'Radio',
   name: 'numbers',
   options: ['one', 'two', 'three'],
-  placeholder: 'Enter Your Text',
 };
 
 const RadioTemplate = (args) => <RadioButtonField {...args} />;

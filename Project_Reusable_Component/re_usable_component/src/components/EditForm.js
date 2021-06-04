@@ -8,10 +8,7 @@ import RadioButtonField from './Radio/RadioButtonField';
 function EditForm(props) {
   const [name, setName] = useState('Default Text');
   const [number, setNumber] = useState(100);
-  const [select, setSelect] = useState({
-    name: 'Mumbai',
-    value: 'Mumbai',
-  });
+  const [select, setSelect] = useState('Mumbai');
   const [radio, setRadio] = useState('Female');
   const [dataState, setDataState] = useState(false);
   const { register, handleSubmit, errors } = useForm();

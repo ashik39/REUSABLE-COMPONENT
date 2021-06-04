@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react/cjs/react.development';
+import PropTypes from 'prop-types';
 import '../Style.css';
 
 const RadioButtonField = ({
@@ -10,12 +11,17 @@ const RadioButtonField = ({
   setvalue,
   register,
   errors = {},
+  className = 'form-check-input',
 }) => {
   const attributes = {};
   const [value, setValue] = useState(false);
   var check = true;
   if (register) {
     attributes.ref = register;
+  }
+
+  if (className) {
+    attributes.className = className;
   }
 
   if (defaultChecked) {
@@ -45,7 +51,6 @@ const RadioButtonField = ({
           {check ? (
             <div>
               <input
-                class="form-check-input"
                 type="radio"
                 id={option}
                 name={name}
@@ -74,7 +79,7 @@ const RadioButtonField = ({
               &nbsp;&nbsp;
               {name && (
                 <label for={option}>
-                  <h4>{option}</h4>
+                  <h3>{option}</h3>
                 </label>
               )}
             </div>
@@ -91,7 +96,7 @@ const RadioButtonField = ({
               &nbsp;&nbsp;
               {name && (
                 <label for={option}>
-                  <h4>{option}</h4>
+                  <h5>{option}</h5>
                 </label>
               )}
             </div>
@@ -105,6 +110,17 @@ const RadioButtonField = ({
       <br />
     </div>
   );
+};
+
+RadioButtonField.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string,
+  defaultChecked: PropTypes.string,
+  setvalue: PropTypes.func,
+  register: PropTypes.func,
+  className: PropTypes.string,
+  options: PropTypes.array,
+  errors: PropTypes.object,
 };
 
 export default RadioButtonField;
