@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import TextField from './Input/TextField';
-import NumberField from './Input/NumberField';
+import InputField from './Input/TextField';
 import SelectField from './Select/SelectField';
 import RadioButtonField from './Radio/RadioButtonField';
 
@@ -43,7 +42,8 @@ function EditForm(props) {
       <h2 className="white">EDIT FORM</h2>
       <div className="center">
         <form onSubmit={handleSubmit(submitButton)}>
-          <TextField
+          <InputField
+            type="text"
             placeholder="Text"
             label="Text Field"
             name="name"
@@ -54,7 +54,8 @@ function EditForm(props) {
             errors={errors}
           />
           <br />
-          <NumberField
+          <InputField
+            type="number"
             placeholder="Number"
             label="Number Field"
             name="number"

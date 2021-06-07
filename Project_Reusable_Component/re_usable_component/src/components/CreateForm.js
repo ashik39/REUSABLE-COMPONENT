@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import NumberField from './Input/NumberField';
-import TextField from './Input/TextField';
+import InputField from './Input/TextField';
 import SelectField from './Select/SelectField';
 import RadioButtonField from './Radio/RadioButtonField';
 import ModalPopup from './ModalPopup';
@@ -72,7 +71,8 @@ function CreateForm() {
       ) : (
         <div className="center">
           <form onSubmit={handleSubmit(submitButton)}>
-            <TextField
+            <InputField
+              type="text"
               placeholder="Text"
               label="Text Field"
               name="name"
@@ -82,7 +82,8 @@ function CreateForm() {
               errors={errors}
             />
             <br />
-            <NumberField
+            <InputField
+              type="number"
               placeholder="Number"
               label="Number Field"
               name="number"
